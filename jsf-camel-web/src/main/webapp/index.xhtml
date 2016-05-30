@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"         
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">      
+
+    <f:view contracts="default" transient="false">
+        <ui:composition template="/template.xhtml">  
+            <ui:define name="content"> 
+                <h:form id="registerForm">   
+                    <p:growl/>
+                    <div class="container content">
+                        <div class="row">
+                            <br/><br/><br/>
+                            <h:link outcome="userlist" value="All users"/>
+                            <br/>
+                            <label>Firstname *</label>
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" jsf:id="firstname" jsf:value="#{mongoClientBean.user.firstname}" jsf:required="true"  style="width:400px" class="form-control">
+                                        <f:validateLength maximum="50"/>
+                                    </input>
+                                </div>                
+                            </div>
+                            <label>Lastname *</label>
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" jsf:id="lastname" jsf:value="#{mongoClientBean.user.lastname}" jsf:required="true"  style="width:400px" class="form-control">
+                                        <f:validateLength maximum="50"/>
+                                    </input>
+                                </div>                
+                            </div>
+                            <label>Email *</label>
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" jsf:id="email" jsf:value="#{mongoClientBean.user.email}" jsf:required="true"  style="width:400px" class="form-control">
+                                        <f:validateLength maximum="50"/>
+                                    </input>
+                                </div>                
+                            </div>
+                            <br/>
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <p><button type="submit" jsf:action="#{mongoClientBean.sendToRoute()}" class="btn btn-danger">Save</button></p>
+                                </div>                
+                            </div>
+                        </div>
+                        <br/>
+
+                    </div>
+                    <hr/>
+                 
+                </h:form>
+
+
+
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
